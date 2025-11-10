@@ -12,7 +12,7 @@ import pyproj
 os.environ["PROJ_LIB"] = pyproj.datadir.get_data_dir()
 os.environ["PROJ_NETWORK"] = "ON"
 
-print("pproj dir":, pyproj.datadir.get_data_dir())
+print("pproj dir:", pyproj.datadir.get_data_dir())
 
 sys.path.insert(0, os.path.abspath(".."))
 
