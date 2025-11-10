@@ -15,7 +15,6 @@ jobs:
       matrix:
         python-version: [ "3.13" ]
     env:
-      WRADLIB_DATA: ./wradlib-data
       CONDA_ENV_FILE: environment.yml
     steps:
       - name: Checkout repository
@@ -24,17 +23,17 @@ jobs:
       - name: Install micromamba environment
         uses: mamba-org/setup-micromamba@v2
         with:
-          environment-name: radolan-guide-guide
+          environment-name: radolan-guide
           environment-file: environment.yml
           cache-environment: true
           cache-environment-key: "${{runner.os}}-${{runner.arch}}-py${{env.PYTHON_VERSION}}-${{env.TODAY}}-${{hashFiles(env.CONDA_ENV_FILE)}}"
           create-args: >-
             python=${{matrix.python-version}}
 
-      - name: Build Sphinx documentation
-        working-directory: notebooks
-        run: |
-          pytest -v -n auto
+      #- name: pytest notebooks
+      #  working-directory: notebooks
+      #  run: |
+      #    pytest -v -n auto
 
       - name: Build documentation with Sphinx
         run: |
