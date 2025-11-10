@@ -6,6 +6,14 @@
 import os
 import sys
 
+import pyproj
+
+# Must be set BEFORE importing packages that use PROJ
+os.environ["PROJ_LIB"] = pyproj.datadir.get_data_dir()
+os.environ["PROJ_NETWORK"] = "ON"
+
+print("pproj dir":, pyproj.datadir.get_data_dir())
+
 sys.path.insert(0, os.path.abspath(".."))
 
 project = "RADOLAN Guide"
