@@ -3,11 +3,7 @@ version: 2
 build:
   os: ubuntu-22.04
   tools:
-    python: mambaforge-latest
-  jobs:
-    pre_build:
-      - export PROJ_LIB=/home/docs/.conda/envs/docs/share/proj
-      - echo "PROJ_LIB:" $PROJ_LIB
+    python: miniconda-latest
 
 conda:
   environment: environment.yml
