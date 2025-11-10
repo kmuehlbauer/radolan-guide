@@ -14,12 +14,14 @@ jobs:
       fail-fast: false
       matrix:
         python-version: [ "3.13" ]
+    defaults:
+      run:
+        shell: bash -l {0}
     env:
       CONDA_ENV_FILE: environment.yml
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Install micromamba environment
         uses: mamba-org/setup-micromamba@v2
         with:
@@ -30,10 +32,10 @@ jobs:
           create-args: >-
             python=${{matrix.python-version}}
 
-      #- name: pytest notebooks
-      #  working-directory: notebooks
-      #  run: |
-      #    pytest -v -n auto
+      - name: pytest notebooks
+        working-directory: notebooks
+        run: |
+          pytest -v -n auto
 
       - name: Build documentation with Sphinx
         run: |
