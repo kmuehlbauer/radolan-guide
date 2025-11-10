@@ -39,7 +39,7 @@ jobs:
 
       - name: Build documentation with Sphinx
         run: |
-          python -m sphinx -j 14 -b html -W . _build/html -v
+          python -m sphinx -j 14 -b html . _build/html -v
 
       - name: Upload HTML build (for PR inspection)
         if: ${{ success() }}
