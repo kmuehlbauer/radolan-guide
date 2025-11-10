@@ -7,6 +7,7 @@ build:
   jobs:
     pre_build:
       - export PROJ_LIB="$CONDA_PREFIX/share/proj"
+      - echo "PROJ_LIB:" $PROJ_LIB
 
 conda:
   environment: environment.yml
